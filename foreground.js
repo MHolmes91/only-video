@@ -83,6 +83,7 @@
     const body = document.querySelector('body')
     const videos = document.querySelectorAll('video')
     if (videos && videos.length) {
+        body.setAttribute('class', body.getAttribute('class') + ' only-video-body')
         onlyVideoLog('video only!')
         if (videos.length === 1) {
             onlyVideo(videos[0])
@@ -90,5 +91,17 @@
             onlyVideoLog('video set')
             aSetOfVideos(videos)
         }
+    } else {
+        onlyVideoLog('no videos')
+        const noVideos = document.createElement('div')
+        noVideos.setAttribute('class', 'only-video-no-videos')
+
+        const noVideosMessage = document.createElement('div')
+        noVideosMessage.setAttribute('class', 'only-video-no-videos-message')
+        noVideosMessage.innerText = 'No Videos Found'
+        noVideos.appendChild(noVideosMessage)
+
+        document.body.appendChild(noVideos)
+        setTimeout(() => document.body.removeChild(noVideos), 1500)
     }
 })()

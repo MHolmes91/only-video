@@ -33,7 +33,7 @@
     flex-wrap: wrap;
 }
 
-body {
+body.only-video-body {
     background-image: linear-gradient(#222222 0%, #111111 100%);
     background-repeat: no-repeat;
     margin: 0;
@@ -52,4 +52,41 @@ body {
     animation-timing-function: ease-out;
     max-height: 100%;
     max-width: 100%;
+}
+
+.only-video-no-videos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000000;
+}
+
+.only-video-no-videos-message {
+    background-image: linear-gradient(#222222 0%, #111111 100%);
+    background-repeat: no-repeat;
+    margin: 0;
+    background-attachment: fixed;
+    color: #cccccc;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 500;
+    padding: 10px;
+    box-shadow: 0px 0px 5px 5px #111111;
+    animation-name: no-videos-message-animation;
+    animation-delay: 1.2s;
+    animation-duration: 0.4s;
+}
+
+@keyframes no-videos-message-animation {
+    from {
+        transform: scale(1.0)
+    }
+    to {
+        transform: scale(0)
+    }
 }
