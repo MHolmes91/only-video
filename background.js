@@ -1,19 +1,17 @@
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ color: '#cc88cc' }, () => {
-    console.log('This is purp')
-  })
+const onlyVideoLog = s => console.log(`[only video] ${s}`)
 
-  chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
-    console.log('wat')
-    chrome.declarativeContent.onPageChanged.addRules([{
-      conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: { hostEquals: 'developer.chrome.com' },
-      }),
-      new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: { hostEquals: 'mlb66.ir' },
-      })
-      ],
-      actions: [new chrome.declarativeContent.ShowPageAction()]
-    }])
-  })
+chrome.runtime.onInstalled.addListener(() => {
+    onlyVideoLog('Installed only-video')
+
+    chrome.browserAction.onClicked.addListener(() => {
+        onlyVideoLog('clicked a tab')
+        chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+            const currentTabId = tabs[0].id
+            onlyVideoLog('got tabs')
+            chrome.tabs.executeScript(currentTabId, { file: './foreground.js' }, () => onlyVideoLog('inserted js'))
+            chrome.tabs.insertCSS(currentTabId, {
+                file: './only-video.css',
+            }, () => onlyVideoLog('inserted css'))
+        })
+    })
 })
