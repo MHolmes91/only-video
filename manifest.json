@@ -1,0 +1,32 @@
+{
+  "name": "Only Video",
+  "version": "1.0",
+  "description": "Removes everything but the video element you want on the page",
+  "permissions": [
+    "storage",
+    "declarativeContent",
+    "activeTab"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon-16.png",
+      "32": "assets/icon-32.png",
+      "48": "assets/icon-48.png",
+      "128": "assets/icon-128.jpg"
+    }
+  },
+  "icons": {
+    "16": "assets/icon-16.png",
+    "32": "assets/icon-32.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.jpg"
+  },
+  "manifest_version": 2
+}
