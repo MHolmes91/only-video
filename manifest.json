@@ -2,13 +2,9 @@
   "name": "Only Video",
   "version": "0.0.1",
   "description": "Removes everything but the video element you want on the page",
-  "permissions": [
-    "activeTab"
-  ],
+  "permissions": ["activeTab"],
   "background": {
-    "scripts": [
-      "background.js"
-    ],
+    "scripts": ["background.js"],
     "persistent": false
   },
   "browser_action": {
@@ -25,8 +21,7 @@
     "48": "assets/icon-48.png",
     "128": "assets/icon-128.png"
   },
-  "web_accessible_resources": [
-    "./only-video.css"
-  ],
+  "web_accessible_resources": ["./only-video.css"],
   "manifest_version": 2
 }
+
