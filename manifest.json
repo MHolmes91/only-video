@@ -1,8 +1,8 @@
 {
-  "name": "Only Video",
-  "short_name": "Only Video",
-  "description": "Removes everything but the video element you want on the page",
-  "version": "0.0.2",
+  "name": "__MSG_name__",
+  "short_name": "__MSG_name__",
+  "description": "__MSG_description__",
+  "version": "0.0.3",
   "default_locale": "en",
   "author": "Mark Holmes",
   "permissions": ["activeTab"],

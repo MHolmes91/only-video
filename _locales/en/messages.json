@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Only Video"
+  },
+  "description": {
+    "message": "Removes everything but the video element you want on the page"
+  },
+  "noVideosFound": {
+    "message": "No Videos Found"
+  }
+}

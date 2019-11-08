@@ -98,7 +98,7 @@
 
         const noVideosMessage = document.createElement('div')
         noVideosMessage.setAttribute('class', 'only-video-no-videos-message')
-        noVideosMessage.innerText = 'No Videos Found'
+        noVideosMessage.innerText = chrome.i18n.getMessage('noVideosFound')
         noVideos.appendChild(noVideosMessage)
 
         document.body.appendChild(noVideos)
