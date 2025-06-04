@@ -2,7 +2,7 @@
   "name": "__MSG_name__",
   "short_name": "__MSG_name__",
   "description": "__MSG_description__",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "default_locale": "en",
   "author": "Mark Holmes",
   "permissions": ["activeTab", "scripting"],
@@ -23,10 +23,11 @@
     "48": "assets/icon-48.png",
     "128": "assets/icon-128.png"
   },
-  "web_accessible_resources": [{
-    "resources": ["only-video.css"],
-    "matches": ["<all_urls>"]
-  }],
+  "web_accessible_resources": [
+    {
+      "resources": ["only-video.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "manifest_version": 3
 }
-
