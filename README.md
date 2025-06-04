@@ -10,6 +10,9 @@ This project uses the latest Node.js LTS release (v22). The repository includes
 an `.nvmrc` file, so running `nvm use` will automatically select the correct
 version.
 
+The extension source code is written in **TypeScript**, which is compiled during
+the build process.
+
 ## Installing from Releases
 
 Automated GitHub releases include a prebuilt copy of the extension and an auto-generated changelog describing the changes.

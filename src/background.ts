@@ -1,8 +1,12 @@
-const onlyVideoLog = s => console.log(`[only video] ${s}`);
+const onlyVideoLog = (s: string): void => console.log(`[only video] ${s}`);
 
-chrome.action.onClicked.addListener(async tab => {
+chrome.action.onClicked.addListener(async (tab: chrome.tabs.Tab) => {
     onlyVideoLog('clicked a tab');
     const currentTabId = tab.id;
+    if (currentTabId === undefined) {
+        onlyVideoLog('no tab id');
+        return;
+    }
     try {
         await chrome.scripting.executeScript({
             target: { tabId: currentTabId },
@@ -15,6 +19,7 @@ chrome.action.onClicked.addListener(async tab => {
         });
         onlyVideoLog('inserted css');
     } catch (e) {
-        onlyVideoLog(`error: ${e}`);
+        const message = e instanceof Error ? e.message : String(e);
+        onlyVideoLog(`error: ${message}`);
     }
 });

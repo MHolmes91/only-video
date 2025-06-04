@@ -8,7 +8,7 @@ global.chrome = {
 };
 
 beforeAll(async () => {
-  await import('./background.js');
+  await import('./background');
 });
 
 describe('background onClicked', () => {
@@ -34,7 +34,7 @@ describe('foreground multiple videos', () => {
 
   test('handles multiple videos', async () => {
     document.body.innerHTML = '<video id="v1"></video><video id="v2"></video>';
-    await import('./foreground.js');
+    await import('./foreground');
     const gallery = document.querySelector('.only-video-gallery');
     expect(gallery).not.toBeNull();
     expect(gallery.querySelectorAll('video').length).toBe(2);
@@ -42,7 +42,7 @@ describe('foreground multiple videos', () => {
 
   test('focuses on single video when clicked', async () => {
     document.body.innerHTML = '<video id="v1"></video><video id="v2"></video>';
-    await import('./foreground.js');
+    await import('./foreground');
     const video = document.getElementById('v1');
     video.click();
     const single = document.querySelector('.only-video-single-container');

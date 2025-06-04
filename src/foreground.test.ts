@@ -13,14 +13,14 @@ describe('foreground script', () => {
 
   test('handles single video', async () => {
     document.body.innerHTML = '<video></video>';
-    await import('./foreground.js');
+    await import('./foreground');
     const container = document.querySelector('.only-video-single-container');
     expect(container).not.toBeNull();
     expect(container.querySelector('video')).not.toBeNull();
   });
 
   test('handles no videos', async () => {
-    await import('./foreground.js');
+    await import('./foreground');
     const notice = document.querySelector('.only-video-no-videos');
     expect(notice).not.toBeNull();
     jest.runAllTimers();
