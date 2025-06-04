@@ -1,13 +1,20 @@
 const onlyVideoLog = s => console.log(`[only video] ${s}`)
 
-chrome.browserAction.onClicked.addListener(() => {
+chrome.action.onClicked.addListener(async tab => {
     onlyVideoLog('clicked a tab')
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-        const currentTabId = tabs[0].id
-        onlyVideoLog('got tabs')
-        chrome.tabs.executeScript(currentTabId, { file: './foreground.js' }, () => onlyVideoLog('inserted js'))
-        chrome.tabs.insertCSS(currentTabId, {
-            file: './only-video.css',
-        }, () => onlyVideoLog('inserted css'))
-    })
+    const currentTabId = tab.id
+    try {
+        await chrome.scripting.executeScript({
+            target: { tabId: currentTabId },
+            files: ['foreground.js'],
+        })
+        onlyVideoLog('inserted js')
+        await chrome.scripting.insertCSS({
+            target: { tabId: currentTabId },
+            files: ['only-video.css'],
+        })
+        onlyVideoLog('inserted css')
+    } catch (e) {
+        onlyVideoLog(`error: ${e}`)
+    }
 })
