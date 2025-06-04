@@ -1,10 +1,10 @@
-import { randomDirection, randomAlphaNumStr } from './utils.js';
+import { randomDirection, randomAlphaNumStr } from './utils';
 
 (() => {
-    const head = document.querySelector('head');
-    const onlyVideoLog = s => console.log(`[only video] ${s}`);
+    const head = document.querySelector<HTMLHeadElement>('head');
+    const onlyVideoLog = (s: string): void => console.log(`[only video] ${s}`);
 
-    const createVideoSwoopAnimation = video => {
+    const createVideoSwoopAnimation = (video: HTMLVideoElement): void => {
         const animationName = randomAlphaNumStr();
         const randomHeight = randomDirection() * (Math.ceil(Math.random() * 100) + 100);
         const randomWidth = randomDirection() * (Math.ceil(Math.random() * 100) + 100);
@@ -26,31 +26,31 @@ import { randomDirection, randomAlphaNumStr } from './utils.js';
         const style = document.createElement('style');
         style.type = 'text/css';
         style.appendChild(document.createTextNode(css));
-        head.appendChild(style);
+        head?.appendChild(style);
 
-        video.style['animation-name'] = animationName;
+        video.style.animationName = animationName;
     };
 
-    const setVideoStyling = video => {
+    const setVideoStyling = (video: HTMLVideoElement): void => {
         video.removeAttribute('height');
         video.removeAttribute('width');
         video.removeAttribute('style');
 
-        video.setAttribute('class', 'only-video-video');
-        video.setAttribute('controls', true);
+        video.className = 'only-video-video';
+        video.controls = true;
     };
 
-    const setGalleryVideoStyling = video => {
+    const setGalleryVideoStyling = (video: HTMLVideoElement): void => {
         video.removeAttribute('height');
         video.removeAttribute('width');
         video.removeAttribute('style');
 
         createVideoSwoopAnimation(video);
-        video.setAttribute('class', 'only-video-video only-video-gallery-video');
-        video.setAttribute('controls', true);
+        video.className = 'only-video-video only-video-gallery-video';
+        video.controls = true;
     };
 
-    const onlyVideo = theChosenOne => {
+    const onlyVideo = (theChosenOne: HTMLVideoElement): void => {
         setVideoStyling(theChosenOne);
         const container = document.createElement('div');
         container.setAttribute('class', 'only-video-single-container');
@@ -59,7 +59,7 @@ import { randomDirection, randomAlphaNumStr } from './utils.js';
         body.appendChild(container);
     };
 
-    const aSetOfVideos = videos => {
+    const aSetOfVideos = (videos: NodeListOf<HTMLVideoElement>): void => {
         const container = document.createElement('div');
         container.setAttribute('class', 'only-video-container');
 
@@ -71,7 +71,7 @@ import { randomDirection, randomAlphaNumStr } from './utils.js';
             setGalleryVideoStyling(video);
             video.muted = true;
             video.addEventListener('click', e => {
-                onlyVideo(e.target);
+                onlyVideo(e.currentTarget as HTMLVideoElement);
             });
             gallery.appendChild(video);
         });
@@ -80,8 +80,8 @@ import { randomDirection, randomAlphaNumStr } from './utils.js';
     };
 
     onlyVideoLog('attempting to make the page video only');
-    const body = document.querySelector('body');
-    const videos = document.querySelectorAll('video');
+    const body = document.querySelector<HTMLBodyElement>('body')!;
+    const videos = document.querySelectorAll<HTMLVideoElement>('video');
     if (videos && videos.length) {
         // Use classList to avoid a leading "null" when the body has no class
         body.classList.add('only-video-body');

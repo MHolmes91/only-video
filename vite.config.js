@@ -5,8 +5,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        background: 'src/background.js',
-        foreground: 'src/foreground.js',
+        background: 'src/background.ts',
+        foreground: 'src/foreground.ts',
         style: 'src/only-video.css'
       },
       output: {

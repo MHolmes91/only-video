@@ -1,4 +1,4 @@
-import { randomDirection, randomAlphaNumStr } from './utils.js';
+import { randomDirection, randomAlphaNumStr } from './utils';
 
 describe('utils', () => {
   test('randomDirection returns either 1 or -1', () => {
