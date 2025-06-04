@@ -4,6 +4,7 @@ global.chrome = {
     executeScript: jest.fn().mockResolvedValue(),
     insertCSS: jest.fn().mockResolvedValue(),
   },
+  i18n: { getMessage: jest.fn().mockReturnValue('no videos') },
 };
 
 beforeAll(async () => {
@@ -22,5 +23,31 @@ describe('background onClicked', () => {
       target: { tabId: 1 },
       files: ['only-video.css'],
     });
+  });
+});
+
+describe('foreground multiple videos', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '';
+    jest.resetModules();
+  });
+
+  test('handles multiple videos', async () => {
+    document.body.innerHTML = '<video id="v1"></video><video id="v2"></video>';
+    await import('./foreground.js');
+    const gallery = document.querySelector('.only-video-gallery');
+    expect(gallery).not.toBeNull();
+    expect(gallery.querySelectorAll('video').length).toBe(2);
+  });
+
+  test('focuses on single video when clicked', async () => {
+    document.body.innerHTML = '<video id="v1"></video><video id="v2"></video>';
+    await import('./foreground.js');
+    const video = document.getElementById('v1');
+    video.click();
+    const single = document.querySelector('.only-video-single-container');
+    expect(single).not.toBeNull();
+    expect(single.querySelectorAll('video').length).toBe(1);
+    expect(document.querySelector('.only-video-gallery')).toBeNull();
   });
 });
