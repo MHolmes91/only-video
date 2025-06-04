@@ -2,7 +2,7 @@
   "name": "__MSG_name__",
   "short_name": "__MSG_name__",
   "description": "__MSG_description__",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "default_locale": "en",
   "author": "Mark Holmes",
   "permissions": ["activeTab", "scripting"],
