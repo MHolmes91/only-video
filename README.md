@@ -1,5 +1,7 @@
 # Only Video
 
+[![CI](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml)
+
 Chrome extension to hide everything except video elements.
 
 ## Prerequisites
