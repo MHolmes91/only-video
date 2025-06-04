@@ -34,3 +34,8 @@ npm run build
 
 The compiled extension will be in the `dist/` directory.
 
+## Incrementing the Version
+
+Run `npm version <patch|minor|major>` to bump the project version. The `version` script will automatically update `public/manifest.json` so its version matches `package.json`.
+
+

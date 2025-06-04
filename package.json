@@ -1,6 +1,6 @@
 {
   "name": "only-video",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "Chrome extension to show only video elements",
   "main": "background.js",
   "type": "module",
@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "sync-version": "node ./scripts/sync-version.js",
+    "version": "node ./scripts/sync-version.js"
   },
   "keywords": [],
   "author": "",
