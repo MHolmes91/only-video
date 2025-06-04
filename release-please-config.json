@@ -1,12 +1,5 @@
 {
-  "headBranchName": "release-please/bootstrap/default",
-  "baseBranchName": "main",
-  "number": 9,
-  "title": "chore: bootstrap releases for path: .",
-  "body": "Configuring release-please for path: .",
-  "files": [],
-  "labels": [],
-  "bootstrap-sha": "04e626022a1cb793431d33f7cad792abea6c6e24",
+  "bootstrap-sha": "13588df72b5fa2a19a06a14fe3881f878a2ca1d3",
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
